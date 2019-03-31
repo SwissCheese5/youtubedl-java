@@ -12,7 +12,7 @@ import java.util.List;
 
 public class YoutubeDLTest {
 
-	private final static String DIRECTORY = System.getProperty("java.io.tmpdir");
+	private final static File DIRECTORY = new File("TestDir");
 	private final static String VIDEO_URL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 	private final static String NONE_EXISTENT_VIDEO_URL = "https://www.youtube.com/watch?v=dQw4w9WgXcZ";
 	private static boolean setUpIsDone = false;
@@ -31,8 +31,7 @@ public class YoutubeDLTest {
 		}
 		setUpIsDone = true;
 
-		File file = new File(DIRECTORY);
-		if (!file.exists()) file.mkdirs();
+		if (!DIRECTORY.exists()) DIRECTORY.mkdirs();
 
 		File exe = new File("youtube-dl.exe");
 		YoutubeDL.setExecutablePath(exe.getAbsolutePath());
@@ -63,23 +62,23 @@ public class YoutubeDLTest {
 
 		YoutubeDLRequest request = new YoutubeDLRequest();
 		request.setUrl(VIDEO_URL);
-		request.setOption("simulate");
+	//	request.setOption("simulate");
 
 		YoutubeDLResponse response = YoutubeDL.execute(request);
 
 		File exe = new File("youtube-dl.exe");
-		Assert.assertEquals(exe.getAbsolutePath() + " " + VIDEO_URL + " --simulate", response.getCommand());
+		Assert.assertEquals(exe.getAbsolutePath() + " " + VIDEO_URL, response.getCommand());
 	}
 
 	@Test
 	public void testDirectory() throws YoutubeDLException {
 
-		YoutubeDLRequest request = new YoutubeDLRequest(VIDEO_URL, DIRECTORY);
-		request.setOption("simulate");
+		YoutubeDLRequest request = new YoutubeDLRequest(VIDEO_URL, DIRECTORY.getAbsolutePath());
+	//	request.setOption("simulate");
 
 		YoutubeDLResponse response = YoutubeDL.execute(request);
 
-		Assert.assertEquals(DIRECTORY, response.getDirectory());
+		Assert.assertEquals(DIRECTORY.getAbsolutePath(), response.getDirectory());
 	}
 
 	@Test
