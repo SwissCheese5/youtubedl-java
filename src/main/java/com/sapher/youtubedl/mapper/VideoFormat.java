@@ -1,18 +1,16 @@
 package com.sapher.youtubedl.mapper;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class VideoFormat {
 
-    public int asr;
-    public int tbr;
-    public int abr;
+    public double asr;
+    public double tbr;
+    public double abr;
     public String format;
-    @JsonProperty("format_id")
+    @SerializedName("format_id")
     public String formatId;
-    @JsonProperty("format_note")
+    @SerializedName("format_note")
     public String formatNote;
     public String ext;
     public int preference;

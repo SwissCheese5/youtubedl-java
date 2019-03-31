@@ -1,19 +1,17 @@
 package com.sapher.youtubedl.mapper;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class HttpHeader {
 
-    @JsonProperty("Accept-Charset")
+    @SerializedName("Accept-Charset")
     public String acceptCharset;
-    @JsonProperty("Accept-Language")
+    @SerializedName("Accept-Language")
     public String acceptLanguage;
-    @JsonProperty("Accept-Encoding")
+    @SerializedName("Accept-Encoding")
     public String acceptEncoding;
-    @JsonProperty("Accept")
+    @SerializedName("Accept")
     public String accept;
-    @JsonProperty("User-Agent")
+    @SerializedName("User-Agent")
     public String userAgent;
 }

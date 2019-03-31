@@ -1,34 +1,32 @@
 package com.sapher.youtubedl.mapper;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class VideoInfo {
 
     public String id;
     public String fulltitle;
     public String title;
-    @JsonProperty("upload_date")
+    @SerializedName("upload_date")
     public String uploadDate;
-    @JsonProperty("display_id")
+    @SerializedName("display_id")
     public String displayId;
     public int duration;
     public String description;
     public String thumbnail;
     public String license;
 
-    @JsonProperty("uploader_id")
+    @SerializedName("uploader_id")
     public String uploaderId;
     public String uploader;
 
-    @JsonProperty("player_url")
+    @SerializedName("player_url")
     public String playerUrl;
-    @JsonProperty("webpage_url")
+    @SerializedName("webpage_url")
     public String webpageUrl;
-    @JsonProperty("webpage_url_basename")
+    @SerializedName("webpage_url_basename")
     public String webpageUrlBasename;
 
     public String resolution;
@@ -37,7 +35,7 @@ public class VideoInfo {
     public String format;
     public String ext;
 
-    @JsonProperty("http_headers")
+    @SerializedName("http_headers")
     public HttpHeader httpHeader;
     public ArrayList<String> categories;
     public ArrayList<String> tags;
